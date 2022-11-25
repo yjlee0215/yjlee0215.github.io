@@ -101,14 +101,10 @@ async function recognizeFaces() {
     dis = parseFloat(results[i]["distance"])
     console.log(lab + dis)
 
-    if (lab == "yjlee" && dis < 0.5) {
+    if (lab != "unknown" && dis < 0.6) {
       $.get(board_url + 'open?name=yjlee');
     }
-    if (lab == "Teddy" && dis < 0.5) {
-      $.get(board_url + 'open?name=Teddy');
-    }
-
-
+    
     const box = resizedDetections[i].detection.box
     const drawBox = new faceapi.draw.DrawBox(box, { label: result })
     drawBox.draw(canvas)
