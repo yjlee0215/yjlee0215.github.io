@@ -104,6 +104,7 @@ async function recognizeFaces() {
     if (lab != "unknown" && dis < 0.6) {
       $.get(board_url + 'open?name=' + lab);
     }
+    console.log(board_url + 'open?name=' + lab)
 
     const box = resizedDetections[i].detection.box
     const drawBox = new faceapi.draw.DrawBox(box, { label: result })
