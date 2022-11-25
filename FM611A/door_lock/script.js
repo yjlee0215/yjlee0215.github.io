@@ -102,7 +102,7 @@ async function recognizeFaces() {
     console.log(lab + dis)
 
     if (lab != "unknown" && dis < 0.6) {
-      $.get(board_url + 'open?name=yjlee');
+      $.get(board_url + 'open');
     }
     
     const box = resizedDetections[i].detection.box
