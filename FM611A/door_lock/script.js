@@ -94,7 +94,7 @@ async function recognizeFaces() {
   results = resizedDetections.map((d) => {
     return faceMatcher.findBestMatch(d.descriptor)
   })
-  const x="yjlee"
+  
   results.forEach((result, i) => {
     console.log(results[i]["label"])     // 顯示所有偵測到的名稱
     lab = parseFloat(labels.indexOf(results[i]["label"]))
@@ -102,9 +102,9 @@ async function recognizeFaces() {
     console.log(lab + dis)
 
     if (lab != "unknown" && dis < 0.6) {
-      $.get(board_url + "open?name="+ x);
+      $.get(board_url + "open?name="+ lab);
     }
-
+    console.log(board_url + "open?name="+ lab)
     const box = resizedDetections[i].detection.box
     const drawBox = new faceapi.draw.DrawBox(box, { label: result })
     drawBox.draw(canvas)
