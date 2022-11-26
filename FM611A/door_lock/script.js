@@ -43,10 +43,10 @@ Promise.all([
 ]).then(startVideo)
 
 async function startVideo() {
-  await navigator.mediaDevices.getUserMedia({ video: {} },) // 前鏡頭
-  // await navigator.mediaDevices.getUserMedia({ 
-  //   video: { facingMode: { exact: "environment" } } },  // 後鏡頭
-  //   )
+  //await navigator.mediaDevices.getUserMedia({ video: {} },) // 前鏡頭
+  await navigator.mediaDevices.getUserMedia({ 
+     video: { facingMode: { exact: "environment" } } },  // 後鏡頭
+  )
     .then(function (stream) {
       video1.srcObject = stream;
     })
@@ -105,6 +105,7 @@ async function recognizeFaces() {
       $.get(board_url + "open?name="+ lab);
     }
     console.log(board_url + "open?name="+ lab)
+    
     const box = resizedDetections[i].detection.box
     const drawBox = new faceapi.draw.DrawBox(box, { label: result })
     drawBox.draw(canvas)
